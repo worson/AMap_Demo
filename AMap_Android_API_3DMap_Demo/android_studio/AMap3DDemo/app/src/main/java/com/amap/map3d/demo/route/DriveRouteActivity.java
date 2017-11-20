@@ -176,6 +176,7 @@ OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSear
 					drivingRouteOverlay.removeFromMap();
 					drivingRouteOverlay.addToMap();
 					drivingRouteOverlay.zoomToSpan();
+
 					mBottomLayout.setVisibility(View.VISIBLE);
 					int dis = (int) drivePath.getDistance();
 					int dur = (int) drivePath.getDuration();

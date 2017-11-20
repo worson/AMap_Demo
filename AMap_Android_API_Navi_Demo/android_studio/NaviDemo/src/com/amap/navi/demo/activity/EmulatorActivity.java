@@ -1,9 +1,13 @@
 package com.amap.navi.demo.activity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.enums.NaviType;
+import com.amap.api.navi.model.AMapNaviLocation;
+import com.amap.api.navi.model.NaviInfo;
 import com.amap.navi.demo.R;
 
 
@@ -17,6 +21,9 @@ public class EmulatorActivity extends BaseActivity {
 		mAMapNaviView = (AMapNaviView) findViewById(R.id.navi_view);
 		mAMapNaviView.onCreate(savedInstanceState);
 		mAMapNaviView.setAMapNaviViewListener(this);
+
+		mAMapNaviView.setLockTilt(0);
+
 	}
 
 	@Override
@@ -49,5 +56,22 @@ public class EmulatorActivity extends BaseActivity {
 	public void onCalculateRouteSuccess() {
 		super.onCalculateRouteSuccess();
 		mAMapNavi.startNavi(NaviType.EMULATOR);
+	}
+
+	@Override
+	public void onNaviInfoUpdate(NaviInfo naviinfo) {
+		super.onNaviInfoUpdate(naviinfo);
+
+	}
+
+	@Override
+	public void onLocationChange(AMapNaviLocation location) {
+		super.onLocationChange(location);
+		Log.e(TAG,"location changed");
+		Log.e("onLocationChange",String.format("gpsframe,time,%s,lat,%s,lon,%s,accuracy,%s,currentTime ,%s,elapsedRealtime ,%s," +
+						"Altitude ,%s,Bearing,%s,Speed,%s",
+				location.getTime(),location.getCoord().getLatitude(),location.getCoord().getLongitude(),
+				location.getAccuracy(),location.getCoord(), SystemClock.elapsedRealtimeNanos(),location.getBearing(),
+				location.getAltitude(),location.getBearing(),location.getSpeed()));
 	}
 }

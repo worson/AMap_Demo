@@ -30,5 +30,25 @@ android {
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
     }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            manifestPlaceholders = [AMAP_API_KEY:"25b9f7a0a75f4f9cd581acb59aa028ee", SHARED_ID:""]
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            manifestPlaceholders = [AMAP_API_KEY:"25b9f7a0a75f4f9cd581acb59aa028ee", SHARED_ID:"android.uid.system"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+        release{
+            storeFile file('debug.keystore')
+        }
+    }
 }
 

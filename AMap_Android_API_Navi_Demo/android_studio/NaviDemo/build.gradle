@@ -7,7 +7,7 @@ allprojects {
 }
 buildscript {
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.0'
     }
 }
 apply plugin: 'com.android.application'
@@ -42,5 +42,24 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            manifestPlaceholders = [AMAP_API_KEY:"9b0d7cb974cfd9740ca1633ee88bbf3b", SHARED_ID:""]
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            manifestPlaceholders = [AMAP_API_KEY:"9b0d7cb974cfd9740ca1633ee88bbf3b", SHARED_ID:"android.uid.system"]
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+        release{
+            storeFile file('debug.keystore')
+        }
     }
 }

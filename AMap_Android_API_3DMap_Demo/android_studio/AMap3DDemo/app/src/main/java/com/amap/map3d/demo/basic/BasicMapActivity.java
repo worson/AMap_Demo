@@ -61,6 +61,7 @@ public class BasicMapActivity extends Activity implements OnClickListener, OnMap
 		nightmap.setOnClickListener(this);
 	}
 
+
 	/**
 	 * 方法必须重写
 	 */

@@ -1,8 +1,5 @@
 package com.amap.map3d.demo.overlay;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,6 +16,9 @@ import com.amap.api.maps.model.Polyline;
 import com.amap.api.maps.model.PolylineOptions;
 import com.amap.map3d.demo.R;
 import com.amap.map3d.demo.util.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * AMapV2地图中简单介绍一些Polyline的用法.
